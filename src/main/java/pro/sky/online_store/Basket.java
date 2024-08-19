@@ -1,8 +1,11 @@
 package pro.sky.online_store;
 
+
 import org.springframework.stereotype.Component;
+
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,9 +13,14 @@ import java.util.Objects;
 @SessionScope
 public class Basket {
     private final List <Integer> idProduct;
+    private final List <Basket> myBasket = new ArrayList<>();
 
     public Basket(List<Integer> idProduct) {
         this.idProduct = idProduct;
+    }
+
+    public List<Basket> getMyBasket() {
+        return myBasket;
     }
 
     @Override
@@ -38,4 +46,14 @@ public class Basket {
     public List<Integer> getIdProduct() {
         return idProduct;
     }
+
+    public void addProduct(List <Integer> idProduct) {
+        Basket basket = new Basket(idProduct);
+        myBasket.add(basket);
+    }
+
+    public List <Basket> getProduct () {
+        return myBasket;
+    }
+
 }
