@@ -1,11 +1,8 @@
 package pro.sky.online_store;
 
-
 import org.springframework.stereotype.Component;
-
 import org.springframework.web.context.annotation.SessionScope;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,15 +10,11 @@ import java.util.Objects;
 @SessionScope
 public class Basket {
     private final List <Integer> idProduct;
-    private final List <Basket> myBasket = new ArrayList<>();
 
     public Basket(List<Integer> idProduct) {
         this.idProduct = idProduct;
     }
 
-    public List<Basket> getMyBasket() {
-        return myBasket;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -48,12 +41,11 @@ public class Basket {
     }
 
     public void addProduct(List <Integer> idProduct) {
-        Basket basket = new Basket(idProduct);
-        myBasket.add(basket);
+        getProduct().addAll(idProduct);
     }
 
-    public List <Basket> getProduct () {
-        return myBasket;
+    public List <Integer> getProduct () {
+        return idProduct;
     }
 
 }

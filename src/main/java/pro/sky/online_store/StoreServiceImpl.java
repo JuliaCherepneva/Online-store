@@ -14,18 +14,15 @@ public class StoreServiceImpl implements StoreService{
     }
 
     @Override
-    public Basket add(List <Integer> idProduct){
+    public List<Integer> add(List <Integer> idProduct){
         basket.addProduct(idProduct);
-        return basket;
+        return idProduct;
 
     }
 
-    public Basket getBasket() {
-        return basket;
-    }
 
     @Override
-    public List<Basket> get(){
+    public List<Integer> get(){
         return basket.getProduct();
     }
 }

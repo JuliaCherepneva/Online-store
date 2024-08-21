@@ -6,7 +6,7 @@ import java.util.List;
 
 @Service
 public interface StoreService {
-    Basket add(List <Integer> idProduct);
-    List<Basket> get ();
+    List<Integer> add(List <Integer> idProduct);
+    List<Integer> get ();
 
 }

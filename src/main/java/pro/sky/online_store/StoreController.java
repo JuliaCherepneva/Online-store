@@ -12,27 +12,21 @@ import java.util.List;
 @RequestMapping("/order")
 public class StoreController {
     private final StoreService storeService;
-    private Basket basket;
 
-    public StoreController(StoreService storeService, Basket basket) {
+    public StoreController(StoreService storeService) {
         this.storeService = storeService;
-        this.basket = basket;
     }
 
     public StoreService getStoreService() {
         return storeService;
     }
 
-    public Basket getBasket() {
-        return basket;
-    }
-
     @GetMapping (path = "/add")
-    public Basket add(@RequestParam("idProduct") List <Integer> idProduct){
+    public List<Integer> add(@RequestParam("idProduct") List <Integer> idProduct){
         return storeService.add(idProduct);
     }
     @GetMapping (path = "/get")
-    public List<Basket> get(){
+    public List<Integer> get(){
         return storeService.get();
     }
 
